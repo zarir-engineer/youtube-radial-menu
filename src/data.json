@@ -1,0 +1,25 @@
+[
+  {
+    "img": "https://yt3.googleusercontent.com/ytc/AIdro_mS-XzXZcZ0xZ1xZ1xZ1xZ1xZ1xZ1xZ1xZ1xZ1x=s176-c-k-c0x00ffffff-no-rj",
+    "url": "https://youtube.com/@samwebster",
+    "label": "Sam Webster"
+  },
+  {
+    "img": "https://yt3.googleusercontent.com/ytc/AIdro_k_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4=s176-c-k-c0x00ffffff-no-rj",
+    "url": "https://youtube.com/@livingspringretreat",
+    "label": "Living Spring"
+  },
+  {
+    "img": "https://yt3.googleusercontent.com/FfX_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4-_4=s176-c-k-c0x00ffffff-no-rj",
+    "url": "https://youtube.com/@theiitiantrader",
+    "label": "IITian Trader"
+  },
+  { "icon": "dollar", "url": "https://youtube.com/@besantmaheshwari", "label": "Basant M" },
+  { "icon": "heart", "url": "https://youtube.com/@drseemajain", "label": "Dr Seema" },
+  { "icon": "user", "url": "https://youtube.com/@indranilguha", "label": "Indranil" },
+  { "icon": "code", "url": "https://youtube.com/@apnacollegeofficial", "label": "Apna College" },
+  { "icon": "utensils", "url": "https://youtube.com/@cookingsorted", "label": "Cooking" },
+  { "icon": "activity", "url": "https://youtube.com/@askdoctors24", "label": "Ask Docs" },
+  { "icon": "message", "url": "https://youtube.com/@coachingwithbrookes", "label": "Brookes" },
+  { "icon": "help", "url": "https://youtube.com/@askhavivanything", "label": "Haviv" }
+]

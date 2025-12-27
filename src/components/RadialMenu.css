@@ -1,0 +1,69 @@
+.radial-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-center {
+  position: relative;
+  z-index: 50;
+}
+
+/* Semi-transparent dark overlay */
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 40;
+}
+
+.trigger-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #ff0000;
+  border: 4px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 51;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  outline: none;
+}
+
+.menu-item {
+  position: absolute;
+  top: 10px; /* Offset to center relative to button */
+  left: 10px; /* Offset to center relative to button */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.9); /* Dark Tactical Grey */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 45;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.menu-item:hover {
+  background: #ff0000;
+  border-color: white;
+  z-index: 60;
+}
+
+/* Add this to the end of RadialMenu.css */
+.menu-icon-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
