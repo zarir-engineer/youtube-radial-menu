@@ -122,3 +122,24 @@
   align-items: center;
   color: #eee;
 }
+
+/* image in entire slice */
+
+.sector-bg-image {
+  transition: opacity 0.2s ease;
+  opacity: 0.8; /* Slightly dim by default */
+}
+
+/* When hovering a slice with an image, make the image brighter */
+.slice-group:hover .sector-bg-image {
+  opacity: 1;
+}
+
+/* Ensure icons are centered */
+.slice-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

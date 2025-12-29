@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import "./RadialMenu.css";
 
-// --- Math Helpers (Centered at 0,0) ---
+// --- Math Helpers ---
 const polarToCartesian = (radius, angleInDegrees) => {
   const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
   return {
@@ -33,7 +33,6 @@ const getSectorPath = (outerRadius, innerRadius, startAngle, endAngle) => {
   ].join(" ");
 };
 
-// test commit push from mobile
 const ICON_MAP = {
   youtube: <Youtube size={24} />,
   activity: <Activity size={20} />,
@@ -64,8 +63,6 @@ const RadialMenu = ({ items }) => {
   
   // CONFIGURATION
   const GAP = 2; 
-
-  // --- RING SIZES ---
   const R1_INNER = 60;
   const R1_OUTER = 140; 
   const R2_INNER = 145;
@@ -87,26 +84,24 @@ const RadialMenu = ({ items }) => {
     const startAngle = (index * sliceAngle) + (GAP / 2);
     const endAngle = ((index + 1) * sliceAngle) - (GAP / 2);
     
-    // Draw Path (0,0 is center)
+    // 1. Calculate the Shape Path
     const pathData = getSectorPath(outerR, innerR, startAngle, endAngle);
     
-    // Icon Position
+    // 2. Calculate Center Point (for icon or image positioning)
     const midAngle = startAngle + (sliceAngle - GAP)/2;
     const iconRadius = innerR + (outerR - innerR) / 2;
     const pos = polarToCartesian(iconRadius, midAngle);
 
-    // Styling
+    // 3. Highlight Logic
     const isActive = activeGroup === item.id;
-    const fillColor = isActive ? "#d4a017" : "rgba(30, 35, 40, 0.85)";
-    const textColor = isActive ? "black" : "#ddd";
+    const defaultFill = "rgba(30, 35, 40, 0.85)";
+    const activeFill = "#d4a017";
 
-    // Icon logic
-    let iconContent;
-    if (item.img) {
-      iconContent = <img src={item.img} alt={item.label} className="slice-img" />;
-    } else {
-      iconContent = <div className="slice-icon">{ICON_MAP[item.icon] || <Link size={20} />}</div>;
-    }
+    // 4. Unique ID for clipping (Essential!)
+    const clipId = `clip-${isGroupParent ? 'parent' : 'child'}-${index}`;
+
+    // Image Sizing (make it big enough to cover the whole wedge)
+    const imgSize = 160; 
 
     return (
       <g 
@@ -119,16 +114,49 @@ const RadialMenu = ({ items }) => {
           target={item.children ? "_self" : "_blank"}
           rel="noopener noreferrer"
         >
+          {/* A. If it's an Image, we render it CLIPPED by the path */}
+          {item.img && (
+            <>
+              <defs>
+                <clipPath id={clipId}>
+                  <path d={pathData} />
+                </clipPath>
+              </defs>
+              <image 
+                href={item.img} 
+                x={pos.x - (imgSize/2)} 
+                y={pos.y - (imgSize/2)} 
+                width={imgSize} 
+                height={imgSize} 
+                preserveAspectRatio="xMidYMid slice" // This acts like object-fit: cover
+                clipPath={`url(#${clipId})`}
+                className="sector-bg-image"
+              />
+            </>
+          )}
+
+          {/* B. The Interaction Layer (Stroke & Overlay) */}
+          {/* If there is an image, we make the fill semi-transparent so the image shows through */}
           <path 
             d={pathData} 
-            fill={fillColor} 
-            stroke="rgba(255,255,255,0.1)"
+            fill={item.img ? (isActive ? "rgba(212, 160, 23, 0.4)" : "rgba(0,0,0,0.4)") : (isActive ? activeFill : defaultFill)} 
+            stroke="rgba(255,255,255,0.2)"
             strokeWidth="1"
             className="slice-path"
           />
-          <foreignObject x={pos.x - 14} y={pos.y - 14} width="28" height="28" style={{ color: textColor }}>
-            {iconContent}
-          </foreignObject>
+
+          {/* C. The Icon (Only show if NO image) */}
+          {!item.img && (
+            <foreignObject 
+              x={pos.x - 14} 
+              y={pos.y - 14} 
+              width="28" 
+              height="28" 
+              style={{ color: isActive ? "black" : "#ddd", pointerEvents: "none" }}
+            >
+              <div className="slice-icon">{ICON_MAP[item.icon] || <Link size={20} />}</div>
+            </foreignObject>
+          )}
         </a>
       </g>
     );
@@ -149,7 +177,6 @@ const RadialMenu = ({ items }) => {
       </AnimatePresence>
 
       <div className="menu-container">
-        {/* Center Button with START Text */}
         <motion.button
           className="trigger-btn"
           onClick={toggleMenu}
@@ -158,7 +185,6 @@ const RadialMenu = ({ items }) => {
            START
         </motion.button>
 
-        {/* SVG Layer */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
@@ -168,18 +194,10 @@ const RadialMenu = ({ items }) => {
               exit={{ scale: 0, rotate: -10, opacity: 0 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
             >
-              {/* VIEWBOX EXPLAINED: 
-                 -300 -300 means the top-left corner is at coordinate (-300, -300).
-                 This puts coordinate (0,0) exactly in the center of the 600x600 box.
-              */}
               <svg width="600" height="600" viewBox="-300 -300 600 600" style={{ overflow: 'visible' }}>
-                
-                {/* INNER RING (Parents) */}
                 {items.map((item, index) => 
                   renderSlice(item, index, items.length, R1_INNER, R1_OUTER, true)
                 )}
-
-                {/* OUTER RING (Children) */}
                 {activeGroup && (() => {
                   const group = items.find(i => i.id === activeGroup);
                   if (group && group.children) {
@@ -188,7 +206,6 @@ const RadialMenu = ({ items }) => {
                     );
                   }
                 })()}
-
               </svg>
             </motion.div>
           )}
