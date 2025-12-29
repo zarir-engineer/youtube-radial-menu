@@ -33,6 +33,7 @@ const getSectorPath = (outerRadius, innerRadius, startAngle, endAngle) => {
   ].join(" ");
 };
 
+// test commit push from mobile
 const ICON_MAP = {
   youtube: <Youtube size={24} />,
   activity: <Activity size={20} />,
