@@ -5,17 +5,17 @@
     "icon": "youtube",
     "children": [
         {
-            "img": "/src/assets/images/samwebster.png",
+            "img": "images/samwebster.png",
             "url": "https://youtube.com/@samwebster",
             "label": "Sam Webster"
         },
         {
-            "img": "/src/assets/images/living-springs-retreat.png",
+            "img": "images/living-springs-retreat.png",
             "url": "https://youtube.com/@LivingSpringsRetreat",
             "label": "Living Spring"
         },
         {
-            "img": "/src/assets/images/the-iitian-trader-official.png",
+            "img": "images/the-iitian-trader-official.png",
             "url": "https://youtube.com/@theiitiantrader_official",
             "label": "IITian Trader"
         },
