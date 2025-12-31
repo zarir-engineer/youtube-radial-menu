@@ -1,0 +1,18 @@
+.toggle-image {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000; /* Keeps it on top of the 3D canvas */
+  
+  width: 140px;   /* Adjust this size if the button looks too big/small */
+  height: auto;   /* Maintains the original aspect ratio */
+  cursor: pointer;
+  
+  /* Adds a smooth animation when you click it */
+  transition: transform 0.1s ease-in-out;
+}
+
+/* Optional: Shrink slightly when clicked for a tactile feel */
+.toggle-image:active {
+  transform: scale(0.95);
+}

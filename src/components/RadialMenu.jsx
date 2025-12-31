@@ -6,6 +6,7 @@ import {
   Bot, Search, Mic, Video, Image, Brain, Building, Cloud, Server
 } from "lucide-react";
 import "./RadialMenu.css";
+import data from '../data.json';
 
 // --- Math Helpers ---
 const polarToCartesian = (radius, angleInDegrees) => {
@@ -57,7 +58,7 @@ const ICON_MAP = {
   link: <Link size={20} />
 };
 
-const RadialMenu = ({ items }) => {
+const RadialMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState(null);
   
@@ -67,7 +68,9 @@ const RadialMenu = ({ items }) => {
   const R1_OUTER = 140; 
   const R2_INNER = 145;
   const R2_OUTER = 230;
-
+  
+  const items = data;
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setActiveGroup(null);

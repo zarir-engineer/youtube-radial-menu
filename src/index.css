@@ -1,4 +1,13 @@
 /* --- Settings UI Styles --- */
+/* Force the whole page to be dark, no matter what view is loaded */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333333; /* Matches your 2D menu background */
+  overflow: hidden; /* Stops scrolling */
+}
 
 .settings-toggle {
   position: absolute;
