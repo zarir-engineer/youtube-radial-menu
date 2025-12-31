@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # or master, depending on your default branch name
+    branches: [ main ] # Ensure this matches your branch (main or master)
 
 permissions:
   contents: read
@@ -24,10 +24,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
+      - name: Build App
         run: npm run build
 
-      - name: Upload Artifacts
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'

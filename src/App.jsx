@@ -1,16 +1,30 @@
-import React from 'react';
-import RadialMenu from './components/RadialMenu';
-import menuData from './data.json'; 
-import './index.css';
+import { useState } from 'react'
+import RadialMenu from './components/RadialMenu'
+import Galaxy from './components/Galaxy'
+import ToggleSwitch from './components/ToggleSwitch' // Import the new component
+import './App.css'
 
 function App() {
+  const [viewMode, setViewMode] = useState('2d');
+
   return (
-    <div className="app-container">
-      <h1 className="app-title">COMMAND CENTER</h1>
-      {/* We pass the whole object { youtube: [...], ai: [...] } */}
-      <RadialMenu items={menuData} />
+    <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+      
+      {/* SKEUOMORPHIC SWITCH */}
+      <ToggleSwitch 
+        is3D={viewMode === '3d'} 
+        onToggle={() => setViewMode(viewMode === '2d' ? '3d' : '2d')}
+      />
+
+      {/* VIEW LOGIC */}
+      {viewMode === '2d' ? (
+        <RadialMenu />
+      ) : (
+        <Galaxy />
+      )}
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
