@@ -1,0 +1,68 @@
+.
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── adhd-circuit-breaker.png
+│   │   │   ├── adhd-with-chris-and-debby.png
+│   │   │   ├── appler.png
+│   │   │   ├── bitwarden.png
+│   │   │   ├── chatgpt.png
+│   │   │   ├── claude.png
+│   │   │   ├── cloudinary.jpg
+│   │   │   ├── cursor-ai.png
+│   │   │   ├── decision-point.jpg
+│   │   │   ├── deepseek.jpeg
+│   │   │   ├── elemen.png
+│   │   │   ├── gear.png
+│   │   │   ├── github.png
+│   │   │   ├── gmail.jpg
+│   │   │   ├── gmail.webp
+│   │   │   ├── google-cloud.jpeg
+│   │   │   ├── google-gemini.png
+│   │   │   ├── indranil.png
+│   │   │   ├── kite.png
+│   │   │   ├── living-springs-retreat.png
+│   │   │   ├── makerbazar.png
+│   │   │   ├── meta-ai.jpeg
+│   │   │   ├── midjourney.png
+│   │   │   ├── neo-titanium-mp.jpg
+│   │   │   ├── nmmc.png
+│   │   │   ├── openai.jpg
+│   │   │   ├── pcloud.png
+│   │   │   ├── perplexity.png
+│   │   │   ├── pms.png
+│   │   │   ├── profile_pic.jpg
+│   │   │   ├── render.jpg
+│   │   │   ├── runwayml.jpg
+│   │   │   ├── samwebster.png
+│   │   │   ├── search-console-google.png
+│   │   │   ├── sensibull.png
+│   │   │   ├── streak.jpg
+│   │   │   ├── the-iitian-trader-official.png
+│   │   │   ├── tradetron.png
+│   │   │   ├── varsity-audio.jpg
+│   │   │   ├── whatsapp.png
+│   │   │   ├── y2mate.png
+│   │   │   ├── youtube-2.png
+│   │   │   └── youtube.png
+│   │   └── react.svg
+│   ├── components
+│   │   ├── RadialMenu.css
+│   │   ├── RadialMenu.jsx
+│   │   └── SettingsModal.jsx
+│   ├── data.json
+│   ├── index.css
+│   └── main.jsx
+├── structure.txt
+└── vite.config.js
+
+6 directories, 60 files
